@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
-export default class GenerateController extends Controller {
+export default class DestroyController extends Controller {
 
   dryRun = false
   verbose = false
@@ -51,7 +51,7 @@ export default class GenerateController extends Controller {
   updateCommand() {
 
     this.command.update({
-      name: 'generate',
+      name: 'destroy',
       options: {
         dryRun: this.dryRun,
         pod: this.pod,

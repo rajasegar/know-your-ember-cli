@@ -21,6 +21,10 @@ export default class CommandService extends Service {
         this.processGenerate(cmd);
         break;
 
+      case 'destroy':
+        this.processDestroy(cmd);
+        break;
+
       case 'version':
         this.processVersion(cmd);
         break;
@@ -77,9 +81,22 @@ export default class CommandService extends Service {
     const classic = cmd.options.classic ? this.alias ? '-c' : '--classic' : '';
     const dummy = cmd.options.dummy ? this.alias ? '-dum' : '--dummy' : '';
     const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
-    const inrepoaddon = cmd.options.inrepoaddon ? this.alias ? `-ir ${cmd.options.inrepoaddon}` : `--in-repo-addon ${cmd.options.inrepoaddon}` : '';
-    const againstir = cmd.options.againstir ?  `--in ${cmd.options.againstir}` : '';
-    this.cmd = `ember generate ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inrepoaddon} ${againstir}`;
+    const inRepoAddon = cmd.options.inRepoAddon ? this.alias ? `-ir ${cmd.options.inRepoAddon}` : `--in-repo-addon ${cmd.options.inRepoAddon}` : '';
+    const ir = cmd.options.ir ?  `--in ${cmd.options.ir}` : '';
+    this.cmd = `ember generate ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
+  }
+
+  processDestroy(cmd) {
+    const dryRun = cmd.options.dryRun ? 
+      this.alias ? '-d' : ' --dry-run' : '';
+
+    const pod = cmd.options.pod ? this.alias ? '-p' : '--pod' : '';
+    const classic = cmd.options.classic ? this.alias ? '-c' : '--classic' : '';
+    const dummy = cmd.options.dummy ? this.alias ? '-dum' : '--dummy' : '';
+    const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
+    const inRepoAddon = cmd.options.inRepoAddon ? this.alias ? `-ir ${cmd.options.inRepoAddon}` : `--in-repo-addon ${cmd.options.inRepoAddon}` : '';
+    const ir = cmd.options.ir ?  `--in ${cmd.options.ir}` : '';
+    this.cmd = `ember destroy ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
   }
 
   processAssetSizes(cmd) {

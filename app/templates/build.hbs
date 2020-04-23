@@ -1,3 +1,21 @@
 <h2>build</h2>
 <p>Builds your app and places it into the output path (dist/ by default).</p>
 <hr>
+<p>
+<label>output-path:</label>
+<Input @type="text" {{on 'input' this.updateOutputPath }} @value={{outputPath}}/>
+</p>
+<p>
+  <label>watch:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleWatch}}/>
+</p>
+
+<p>
+<label>watcher:</label>
+<Input @type="text" {{on 'input' this.updateWatcher }} @value={{watcher}}/>
+</p>
+
+<p>
+  <label>supress-sizes:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleSupressSizes}}/>
+</p>
