@@ -10,6 +10,9 @@ export default class AddonController extends Controller {
   git = false
   yarn = false
   bower = false
+  addonName = 'my-addon'
+  blueprint = ''
+  dir = ''
 
   @service command
 
@@ -56,13 +59,34 @@ export default class AddonController extends Controller {
     this.command.update({
       name: 'addon',
       options: {
+        name: this.addonName,
         dryRun: this.dryRun,
         bower: this.bower,
         npm: this.npm,
         git: this.git,
         yarn: this.yarn,
-        verbose: this.verbose
+        verbose: this.verbose,
+        blueprint: this.blueprint,
+        dir: this.dir
       }
     });
+  }
+
+  @action
+  updateAddonName(event) {
+    this.addonName = event.target.value;
+    this.updateCommand();
+  }
+
+  @action
+  updateBlueprint(event) {
+    this.blueprint = event.target.value;
+    this.updateCommand();
+  }  
+  
+  @action
+  updateDirectory(event) {
+    this.dir = event.target.value;
+    this.updateCommand();
   }
 }

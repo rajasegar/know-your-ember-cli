@@ -3,6 +3,10 @@
   Generates a new folder structure for building an addon, complete with test harness.
 </p>
 <p>
+<label>Addon Name:</label>
+<Input @type="text" {{on 'input' this.updateAddonName }} @value={{addonName}}/>
+</p>
+<p>
   <label>Dry Run:</label>
   <Input @type="checkbox" {{on 'click' this.toggleDryRun}}/>
 </p>
@@ -26,4 +30,12 @@
 <p>
   <label>Yarn:</label>
   <Input @type="checkbox" {{on 'click' this.toggleYarn}}/>
+</p>
+<p>
+<label>Blueprint:</label>
+<Input @type="text" {{on 'input' this.updateBlueprint }}/>
+</p>
+<p>
+<label>Directory:</label>
+<Input @type="text" {{on 'input' this.updateDirectory }}/>
 </p>

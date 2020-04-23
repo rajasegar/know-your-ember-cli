@@ -1,3 +1,8 @@
+body {
+  font-family: 'sans-serif';
+  padding: 10px;
+}
+
 .commandbar {
   width: 100%;
 }

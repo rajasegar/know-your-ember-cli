@@ -5,9 +5,6 @@ export default class ApplicationController extends Controller {
 
   @service command;
 
-  @action
-  toggleAlias() {
-    this.command.toggleAlias();
-  }
+
 
 }
