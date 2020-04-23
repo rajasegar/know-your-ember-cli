@@ -1,1 +1,13 @@
-{{outlet}}
+<h2>asset-sizes</h2>
+<p>
+Shows the sizes of your asset files.
+</p>
+<hr>
+<p>
+<label>output-path:</label>
+<Input @type="text" {{on 'input' this.updateOutputPath }} @value={{outputPath}}/>
+</p>
+<p>
+  <label>json:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleJson}}/>
+</p>

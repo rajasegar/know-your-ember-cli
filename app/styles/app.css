@@ -1,8 +1,9 @@
 body {
-  font-family: 'sans-serif';
-  padding: 10px;
+  font-family: sans-serif;
+  padding: 10px 30px 10px 10px;
   background: #CF483B;
   color: white;
+
 }
 
 a {
@@ -14,7 +15,13 @@ a {
 }
 
 .commandbar {
-  width: 100%;
+  width: 95%;
+  background: #c13c2f;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.5em;
 }
 
 .header-nav {
@@ -31,14 +38,29 @@ a {
 
 .commands-nav ul li {
   list-style: none;
-  margin:0 10px;
+  margin:0 5px;
 }
 
-.commands-nav ul li.active {
-  background: black;
-  color: white;
+.commands-nav ul li a {
+  background: #f2d1cb;
+  color: #a43c29;
+  padding: .5em .5em;
+  border-radius: 4px;
+  transition: background 0.3s;
+  text-decoration: none;
 }
+
+.commands-nav ul li a:hover {
+  background: #e8ada2;
+}
+
 
 footer {
+  position: fixed;
+  bottom: 10px;
   text-align: center;
+}
+
+input[type='checkbox'] {
+  background: white;
 }

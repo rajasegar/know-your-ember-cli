@@ -1,1 +1,46 @@
-{{outlet}}
+<h2>new</h2>
+<p>
+Creates a new directory and runs <strong>ember init</strong> in it.
+</p>
+<hr>
+<p>
+<label>Name:</label>
+<Input @type="text" {{on 'input' this.updateAppName }} @value={{appName}}/>
+</p>
+<p>
+  <label>Dry Run:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleDryRun}}/>
+</p>
+
+<p>
+  <label>Verbose:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleVerbose}}/>
+</p>
+<p>
+  <label>Skip npm:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleSkipNpm}}/>
+</p>
+<p>
+  <label>Skip git:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleSkipGit}}/>
+</p>
+<p>
+  <label>Skip bower:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleSkipBower}}/>
+</p>
+<p>
+  <label>Yarn:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleYarn}}/>
+</p>
+<p>
+  <label>no-welcome:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleWelcome}}/>
+</p>
+<p>
+<label>Blueprint:</label>
+<Input @type="text" {{on 'input' this.updateBlueprint }}/>
+</p>
+<p>
+<label>Directory:</label>
+<Input @type="text" {{on 'input' this.updateDirectory }}/>
+</p>
