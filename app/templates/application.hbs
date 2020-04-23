@@ -1,17 +1,65 @@
-<h1>Know Your ember-cli</h1>
+<h1 class="title">Know Your ember-cli</h1>
 <p><Input class="commandbar" type="text" @value={{this.command.cmd}}/></p>
 <p>
 <label> Use Alias</label>
 <Input type="checkbox" {{on 'click' this.command.toggleAlias}}/></p>
 
-<nav>
+<nav class="header-nav">
   <ul>
     <li>
-<LinkTo @route="index">Home</LinkTo>
+      <LinkTo @route="index">Home</LinkTo>
+    </li>
+  </ul>
+</nav>
+
+<nav class="commands-nav">
+  <ul>
+    <li>Commands: </li>
+    <li>
+      <LinkTo @route="addon">addon</LinkTo>
     </li>
     <li>
-<LinkTo @route="addon">Addon</LinkTo>
+      <LinkTo @route="asset-sizes">asset-sizes</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="build">build</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="destroy">destroy</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="generate">generate</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="help">help</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="init">init</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="install">install</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="new">new</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="serve">serve</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="test">test</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="uninstall-npm">uninstall-npm</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="unknown">unknown</LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="version">version</LinkTo>
     </li>
   </ul>
 </nav>
 {{outlet}}
+<footer>
+  <a href="https://github.com/rajasegar/know-your-ember-cli">Github</a>
+</footer>

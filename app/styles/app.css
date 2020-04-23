@@ -1,8 +1,44 @@
 body {
   font-family: 'sans-serif';
   padding: 10px;
+  background: #CF483B;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+.title {
+  text-align: center;
 }
 
 .commandbar {
   width: 100%;
+}
+
+.header-nav {
+  text-align:center;
+}
+
+.header-nav ul li {
+  list-style: none;
+}
+
+.commands-nav ul {
+  display: flex;
+}
+
+.commands-nav ul li {
+  list-style: none;
+  margin:0 10px;
+}
+
+.commands-nav ul li.active {
+  background: black;
+  color: white;
+}
+
+footer {
+  text-align: center;
 }

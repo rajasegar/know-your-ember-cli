@@ -2,6 +2,8 @@
 
 This is a companion app/page that show all options for [ember-cli](https://ember-cli.com/), allowed the user to select options, and then generated the command line to copy/paste into the terminal.
 
+Watch the app in action [here](https://rajasegar.github.io/know-your-ember-cli)
+
 Thanks to [Melanie Sumner](https://github.com/MelSumner) for the awesome idea.
 
 
