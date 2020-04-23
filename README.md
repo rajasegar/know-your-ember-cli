@@ -1,7 +1,9 @@
 # know-your-ember-cli
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a companion app/page that show all options for [ember-cli](), allowed the user to select options, and then generated the command line to copy/paste into the terminal.
+
+Thanks to [Melanie Sumner]() for the awesome idea.
+
 
 ## Prerequisites
 
