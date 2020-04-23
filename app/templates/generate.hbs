@@ -1,3 +1,40 @@
 <h2>generate</h2>
 <p>Generates new code from blueprints</p>
 <hr>
+
+
+<p>
+<label>Blueprint:</label>
+<Input @type="text" {{on 'input' this.updateBlueprint }} @value={{blueprint}}/>
+</p>
+<p>
+  <label>Dry Run:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleDryRun}}/>
+</p>
+
+<p>
+  <label>Verbose:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleVerbose}}/>
+</p>
+<p>
+  <label>Pod:</label>
+  <Input @type="checkbox" {{on 'click' this.togglePod}}/>
+</p>
+<p>
+  <label>Classic:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleClassic}}/>
+</p>
+<p>
+  <label>Dummy:</label>
+  <Input @type="checkbox" {{on 'click' this.toggleDummy}}/>
+</p>
+
+<p>
+<label>in-repo-addon:</label>
+<Input @type="text" {{on 'input' this.updateInRepoAddon }}/>
+</p>
+<p>
+<label>in:</label>
+<Input @type="text" {{on 'input' this.updateIn }}/>
+(Runs a blueprint against an in repo addon. A path is expected, relative to the root of the project.)
+</p>

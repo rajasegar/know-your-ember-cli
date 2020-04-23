@@ -17,6 +17,14 @@ export default class CommandService extends Service {
         this.processNew(cmd);
         break;
 
+      case 'generate':
+        this.processGenerate(cmd);
+        break;
+
+      case 'version':
+        this.processVersion(cmd);
+        break;
+
       case 'asset-sizes':
         this.processAssetSizes(cmd);
         break;
@@ -61,10 +69,29 @@ export default class CommandService extends Service {
     this.cmd = `ember new ${cmd.options.name} ${dryRun} ${npm} ${git} ${bower} ${yarn} ${verbose} ${blueprint} ${dir} ${noWelcome}`;
   }
 
+  processGenerate(cmd) {
+    const dryRun = cmd.options.dryRun ? 
+      this.alias ? '-d' : ' --dry-run' : '';
+
+    const pod = cmd.options.pod ? this.alias ? '-p' : '--pod' : '';
+    const classic = cmd.options.classic ? this.alias ? '-c' : '--classic' : '';
+    const dummy = cmd.options.dummy ? this.alias ? '-dum' : '--dummy' : '';
+    const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
+    const inrepoaddon = cmd.options.inrepoaddon ? this.alias ? `-ir ${cmd.options.inrepoaddon}` : `--in-repo-addon ${cmd.options.inrepoaddon}` : '';
+    const againstir = cmd.options.againstir ?  `--in ${cmd.options.againstir}` : '';
+    this.cmd = `ember generate ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inrepoaddon} ${againstir}`;
+  }
+
   processAssetSizes(cmd) {
     const json = cmd.options.json ? '--json' : '';
     const outputPath = cmd.options.outputPath ? this.alias ? `-o ${cmd.options.outputPath}` : `--output-path ${cmd.options.outputPath}` : '';
     this.cmd = `ember asset-sizes ${json} ${outputPath}`;
+  }
+
+
+  processVersion(cmd) {
+    const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
+    this.cmd = `ember version ${verbose}`;
   }
 }
 
