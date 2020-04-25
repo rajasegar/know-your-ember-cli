@@ -1,3 +1,38 @@
 <h2>serve</h2>
 <p>Builds and serves your app, rebuilding on file changes.</p>
 <hr>
+<p>
+<label>Port:</label>
+<Input @type="text" {{on 'input' this.updatePort }} @value={{port}}/>
+</p>
+<p>
+<label>Host:</label>
+<Input @type="text" {{on 'input' this.updateHost }} @value={{host}}/>
+</p>
+<p>
+<CheckBox @label="--dry-run ( -d )" @onClick={{this.toggleDryRun}}/>
+</p>
+
+<p>
+<CheckBox @label="--verbose ( -v )" @onClick={{this.toggleVerbose}}/>
+</p>
+<p>
+<CheckBox @label="--skip-npm ( -sn )" @onClick={{this.toggleSkipNpm}}/>
+</p>
+<p>
+<CheckBox @label="--skip-git ( -sg )" @onClick={{this.toggleSkipGit}}/>
+</p>
+<p>
+<CheckBox @label="--skip-bower ( -sb )" @onClick={{this.toggleSkipBower}}/>
+</p>
+<p>
+<CheckBox @label="--yarn" @onClick={{this.toggleYarn}}/>
+</p>
+<p>
+<label>Blueprint:</label>
+<Input @type="text" {{on 'input' this.updateBlueprint }}/>
+</p>
+<p>
+<label>Directory:</label>
+<Input @type="text" {{on 'input' this.updateDirectory }}/>
+</p>

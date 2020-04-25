@@ -40,6 +40,10 @@ export default class CommandService extends Service {
         this.processBuild(cmd);
         break;
 
+      case 'serve':
+        this.processServe(cmd);
+        break;
+
       default:
         break;
     }
@@ -123,8 +127,9 @@ export default class CommandService extends Service {
 
 
   processVersion(cmd) {
-    const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
-    this.cmd = `ember version ${verbose}`;
+    const verbose = cmd.options.verbose ? '--verbose' : '';
+    const _cmd = this.cmdAlias ? 'v' : 'version';
+    this.cmd = `ember ${_cmd} ${verbose}`;
   }
 
   processBuild(cmd) {
@@ -134,6 +139,15 @@ export default class CommandService extends Service {
     const _cmd = this.cmdAlias ? 'b' : 'build';
     this.cmd = `ember ${_cmd} ${watch} ${ss} ${outputPath} ${cmd.options.outputPath}`;
   }
+
+  processServe(cmd) {
+    const port = cmd.options.port ? this.alias ?  '-p' : '--port' : '';
+    const host = cmd.options.host ? this.alias ?  '-H' : '--host' : '';
+    const _cmd = this.cmdAlias ? 's' : 'serve';
+    this.cmd = `ember ${_cmd} ${port} ${host}`;
+  }
+
+
 }
 
 

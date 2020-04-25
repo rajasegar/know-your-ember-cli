@@ -8,29 +8,23 @@
 <Input @type="text" {{on 'input' this.updateAddonName }} @value={{addonName}}/>
 </p>
 <p>
-  <label>Dry Run:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleDryRun}}/>
+<CheckBox @label="--dry-run ( -d )" @onClick={{this.toggleDryRun}}/>
 </p>
 
 <p>
-  <label>Verbose:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleVerbose}}/>
+<CheckBox @label="--verbose ( -v )" @onClick={{this.toggleVerbose}}/>
 </p>
 <p>
-  <label>Skip npm:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleSkipNpm}}/>
+<CheckBox @label="--skip-npm ( -sn )" @onClick={{this.toggleSkipNpm}}/>
 </p>
 <p>
-  <label>Skip git:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleSkipGit}}/>
+<CheckBox @label="--skip-git ( -sg )" @onClick={{this.toggleSkipGit}}/>
 </p>
 <p>
-  <label>Skip bower:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleSkipBower}}/>
+<CheckBox @label="--skip-bower ( -sb )" @onClick={{this.toggleSkipBower}}/>
 </p>
 <p>
-  <label>Yarn:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleYarn}}/>
+<CheckBox @label="--yarn" @onClick={{this.toggleYarn}}/>
 </p>
 <p>
 <label>Blueprint:</label>

@@ -1,5 +1,6 @@
 <h1 class="title">Know Your ember-cli</h1>
-<p><Input class="commandbar" type="text" @value={{this.command.cmd}}/></p>
+<p><Input id="txtCommand" class="commandbar" type="text" @value={{this.command.cmd}}/></p>
+<p class="copy-button"><button type="button" {{on 'click' this.copyToClipboard}} title="Copy to Clipboard">Copy to Clipboard</button></p>
 <p>
 <label>
 <Input type="checkbox" {{on 'click' this.command.toggleAlias}}/>
