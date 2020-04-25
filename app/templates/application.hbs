@@ -1,9 +1,15 @@
 <h1 class="title">Know Your ember-cli</h1>
 <p><Input class="commandbar" type="text" @value={{this.command.cmd}}/></p>
 <p>
-<label> Use Alias</label>
-<Input type="checkbox" {{on 'click' this.command.toggleAlias}}/></p>
-
+<label>
+<Input type="checkbox" {{on 'click' this.command.toggleAlias}}/>
+Option Alias
+</label>
+<label>
+<Input type="checkbox" {{on 'click' this.command.toggleCmdAlias}}/>
+Command Alias
+</label>
+</p>
 <nav class="header-nav">
   <ul>
     <li>

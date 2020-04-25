@@ -4,9 +4,12 @@ import { action } from '@ember/object';
 
 export default class CommandService extends Service {
   @tracked cmd = 'ember '
-  @tracked alias = false
+  @tracked alias = false // Alias for command options/flags
+  @tracked cmdAlias = false // Alias for command
+  @tracked currentCommand
 
   update(cmd) {
+    this.currentCommand = cmd;
 
     switch(cmd.name) {
       case 'addon':
@@ -33,6 +36,10 @@ export default class CommandService extends Service {
         this.processAssetSizes(cmd);
         break;
 
+      case 'build':
+        this.processBuild(cmd);
+        break;
+
       default:
         break;
     }
@@ -42,6 +49,13 @@ export default class CommandService extends Service {
   @action
   toggleAlias() {
     this.alias = !this.alias;
+    this.update(this.currentCommand);
+  }
+
+  @action
+  toggleCmdAlias() {
+    this.cmdAlias = !this.cmdAlias;
+    this.update(this.currentCommand);
   }
 
   processAddon(cmd) {
@@ -83,7 +97,8 @@ export default class CommandService extends Service {
     const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
     const inRepoAddon = cmd.options.inRepoAddon ? this.alias ? `-ir ${cmd.options.inRepoAddon}` : `--in-repo-addon ${cmd.options.inRepoAddon}` : '';
     const ir = cmd.options.ir ?  `--in ${cmd.options.ir}` : '';
-    this.cmd = `ember generate ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
+    const _cmd = this.cmdAlias ? 'g' : 'generate';
+    this.cmd = `ember ${_cmd} ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
   }
 
   processDestroy(cmd) {
@@ -96,7 +111,8 @@ export default class CommandService extends Service {
     const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
     const inRepoAddon = cmd.options.inRepoAddon ? this.alias ? `-ir ${cmd.options.inRepoAddon}` : `--in-repo-addon ${cmd.options.inRepoAddon}` : '';
     const ir = cmd.options.ir ?  `--in ${cmd.options.ir}` : '';
-    this.cmd = `ember destroy ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
+    const _cmd = this.cmdAlias ? 'd' : 'destroy';
+    this.cmd = `ember ${_cmd} ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
   }
 
   processAssetSizes(cmd) {
@@ -109,6 +125,14 @@ export default class CommandService extends Service {
   processVersion(cmd) {
     const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
     this.cmd = `ember version ${verbose}`;
+  }
+
+  processBuild(cmd) {
+    const watch = cmd.options.watch ? this.alias ?  '-w' : '--watch' : '';
+    const ss = cmd.options.supressSizes ? '--suppress-sizes' : '';
+    const outputPath = cmd.options.outputPath ? this.alias ? '-o' : '--output-path': '';
+    const _cmd = this.cmdAlias ? 'b' : 'build';
+    this.cmd = `ember ${_cmd} ${watch} ${ss} ${outputPath} ${cmd.options.outputPath}`;
   }
 }
 

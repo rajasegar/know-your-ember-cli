@@ -1,13 +1,14 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 export default class BuildController extends Controller {
 
   watch = false
   supressSizes = false
-  outputPath = 'dist'
-  watcher = ''
+  @tracked outputPath = 'dist'
+  @tracked watcher = ''
 
   @service command
 
@@ -26,7 +27,7 @@ export default class BuildController extends Controller {
   updateCommand() {
 
     this.command.update({
-      name: 'addon',
+      name: 'build',
       options: {
         watch: this.watch,
         watcher: this.watcher,
@@ -37,20 +38,15 @@ export default class BuildController extends Controller {
   }
 
   @action
-  updateAddonName(event) {
-    this.addonName = event.target.value;
+  updateOutputPath(event) {
+    this.outputPath = event.target.value;
     this.updateCommand();
   }
 
   @action
-  updateBlueprint(event) {
-    this.blueprint = event.target.value;
+  updateWatcher(event) {
+    this.watcher = event.target.value;
     this.updateCommand();
   }  
   
-  @action
-  updateDirectory(event) {
-    this.dir = event.target.value;
-    this.updateCommand();
-  }
 }
