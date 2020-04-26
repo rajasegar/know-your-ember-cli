@@ -1,3 +1,38 @@
 <h2>init</h2>
 <p>Reinitializes a new ember-cli project in the current folder.</p>
 <hr>
+
+<p>
+<label>Name:</label>
+<Input @type="text" {{on 'input' this.updateAppName }} @value={{appName}}/>
+</p>
+<p>
+<CheckBox @label="--dry-run ( -d )" @onClick={{this.toggleDryRun}} />
+</p>
+
+<p>
+<CheckBox @label="--verbose ( -v )" @onClick={{this.toggleVerbose}} />
+</p>
+<p>
+<CheckBox @label="--skip-npm ( -sn )" @onClick={{this.toggleSkipNpm}} />
+</p>
+<p>
+<CheckBox @label="--skip-git ( -sg )" @onClick={{this.toggleSkipGit}} />
+</p>
+<p>
+<CheckBox @label="--skip-bower ( -sb )" @onClick={{this.toggleSkipBower}} />
+</p>
+<p>
+<CheckBox @label="--yarn" @onClick={{this.toggleYarn}} />
+</p>
+<p>
+<CheckBox @label="--no-welcome" @onClick={{this.toggleWelcome}} />
+</p>
+<p>
+<label>Blueprint:</label>
+<Input @type="text" {{on 'input' this.updateBlueprint }}/>
+</p>
+<p>
+<label>Directory:</label>
+<Input @type="text" {{on 'input' this.updateDirectory }}/>
+</p>

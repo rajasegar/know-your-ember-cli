@@ -44,6 +44,14 @@ export default class CommandService extends Service {
         this.processServe(cmd);
         break;
 
+      case 'help':
+        this.processHelp(cmd);
+        break;
+
+      case 'init':
+        this.processInit(cmd);
+        break;
+
       default:
         break;
     }
@@ -91,6 +99,21 @@ export default class CommandService extends Service {
     this.cmd = `ember new ${cmd.options.name} ${dryRun} ${npm} ${git} ${bower} ${yarn} ${verbose} ${blueprint} ${dir} ${noWelcome}`;
   }
 
+  processInit(cmd) {
+    const dryRun = cmd.options.dryRun ? 
+      this.alias ? '-d' : ' --dry-run' : '';
+
+    const npm = cmd.options.npm ? this.alias ? '-sn' : '--skip-npm' : '';
+    const git = cmd.options.git ? this.alias ? '-sg' : '--skip-git' : '';
+    const bower = cmd.options.bower ? this.alias ? '-sb' : '--skip-bower' : '';
+    const yarn = cmd.options.yarn ? '--yarn' : '';
+    const noWelcome = cmd.options.noWelcome ? '--no-welcome' : '';
+    const verbose = cmd.options.verbose ? this.alias ? '-v' : '--verbose' : '';
+    const blueprint = cmd.options.blueprint ? this.alias ? `-b ${cmd.options.blueprint}` : `--blueprint ${cmd.options.blueprint}` : '';
+    const dir = cmd.options.dir ? this.alias ? `-dir ${cmd.options.dir}` : `--directory ${cmd.options.dir}` : '';
+    this.cmd = `ember init ${cmd.options.name} ${dryRun} ${npm} ${git} ${bower} ${yarn} ${verbose} ${blueprint} ${dir} ${noWelcome}`;
+  }
+
   processGenerate(cmd) {
     const dryRun = cmd.options.dryRun ? 
       this.alias ? '-d' : ' --dry-run' : '';
@@ -102,7 +125,8 @@ export default class CommandService extends Service {
     const inRepoAddon = cmd.options.inRepoAddon ? this.alias ? `-ir ${cmd.options.inRepoAddon}` : `--in-repo-addon ${cmd.options.inRepoAddon}` : '';
     const ir = cmd.options.ir ?  `--in ${cmd.options.ir}` : '';
     const _cmd = this.cmdAlias ? 'g' : 'generate';
-    this.cmd = `ember ${_cmd} ${cmd.options.blueprint} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
+    const name = cmd.options.name;
+    this.cmd = `ember ${_cmd} ${cmd.options.blueprint} ${name} ${dryRun} ${pod} ${classic} ${dummy} ${verbose}  ${inRepoAddon} ${ir}`;
   }
 
   processDestroy(cmd) {
@@ -141,12 +165,20 @@ export default class CommandService extends Service {
   }
 
   processServe(cmd) {
-    const port = cmd.options.port ? this.alias ?  '-p' : '--port' : '';
+    const port = cmd.options.port ? this.alias?  '-p' : '--port' : '';
     const host = cmd.options.host ? this.alias ?  '-H' : '--host' : '';
     const _cmd = this.cmdAlias ? 's' : 'serve';
     this.cmd = `ember ${_cmd} ${port} ${host}`;
   }
 
+
+  processHelp(cmd) {
+    const verbose = cmd.options.verbose ? this.alias?  '-v' : '--verbose' : '';
+    const name = cmd.options.name;
+    const json = cmd.options.json ?  '--json' : '';
+    const _cmd = this.cmdAlias ? 'h' : 'help';
+    this.cmd = `ember ${_cmd} ${name} ${verbose} ${json}`;
+  }
 
 }
 

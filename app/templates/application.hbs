@@ -1,6 +1,6 @@
-<h1 class="title">Know Your ember-cli</h1>
+<h1 class="title"><LinkTo @route="index">Know Your ember-cli</LinkTo></h1>
 <p><Input id="txtCommand" class="commandbar" type="text" @value={{this.command.cmd}}/></p>
-<p class="copy-button"><button type="button" {{on 'click' this.copyToClipboard}} title="Copy to Clipboard">Copy to Clipboard</button></p>
+<div class="options-container">
 <p>
 <label>
 <Input type="checkbox" {{on 'click' this.command.toggleAlias}}/>
@@ -11,13 +11,8 @@ Option Alias
 Command Alias
 </label>
 </p>
-<nav class="header-nav">
-  <ul>
-    <li>
-      <LinkTo @route="index">Home</LinkTo>
-    </li>
-  </ul>
-</nav>
+<p class="copy-button"><button type="button" {{on 'click' this.copyToClipboard}} title="Copy to Clipboard">Copy to Clipboard</button></p>
+</div>
 
 <nav class="commands-nav">
   <ul>

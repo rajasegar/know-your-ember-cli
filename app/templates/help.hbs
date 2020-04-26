@@ -1,3 +1,14 @@
 <h2>help</h2>
 <p>Outputs the usage instructions for all commands or the provided command.</p>
 <hr>
+
+<p>
+<label>Command Name:</label>
+<Input @type="text" {{on 'input' this.updateCommandName }} @value={{cmdName}}/>
+</p>
+<p>
+<CheckBox @label="--verbose ( -v )" @onClick={{this.toggleVerbose}}/>
+</p>
+<p>
+<CheckBox @label="--json " @onClick={{this.toggleJson}}/>
+</p>

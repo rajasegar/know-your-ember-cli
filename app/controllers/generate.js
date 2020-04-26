@@ -13,6 +13,7 @@ export default class GenerateController extends Controller {
   inRepoAddon = ''
   ir = ''
   @tracked blueprint = ''
+  @tracked name = ''
 
   @service command
 
@@ -60,7 +61,8 @@ export default class GenerateController extends Controller {
         inRepoAddon: this.inRepoAddon,
         blueprint: this.blueprint,
         ir: this.ir,
-        verbose: this.verbose
+        verbose: this.verbose,
+        name: this.name
       }
     });
   }
@@ -68,6 +70,12 @@ export default class GenerateController extends Controller {
   @action
   updateInRepoAddonName(event) {
     this.inrepoaddon = event.target.value;
+    this.updateCommand();
+  }
+
+  @action
+  updateName(event) {
+    this.name = event.target.value;
     this.updateCommand();
   }
 

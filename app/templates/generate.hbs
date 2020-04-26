@@ -8,25 +8,24 @@
 <Input @type="text" {{on 'input' this.updateBlueprint }} @value={{blueprint}}/>
 </p>
 <p>
-  <label>Dry Run:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleDryRun}}/>
+<label>Name:</label>
+<Input @type="text" {{on 'input' this.updateName }} @value={{name}}/>
+</p>
+<p>
+<CheckBox @label="--dry-run ( -d )" @onClick={{this.toggleDryRun}} />
 </p>
 
 <p>
-  <label>Verbose:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleVerbose}}/>
+<CheckBox @label="--verbose ( -v )" @onClick={{this.toggleVerbose}} />
 </p>
 <p>
-  <label>Pod:</label>
-  <Input @type="checkbox" {{on 'click' this.togglePod}}/>
+<CheckBox @label="--pod ( -p )" @onClick={{this.togglePod}} />
 </p>
 <p>
-  <label>Classic:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleClassic}}/>
+<CheckBox @label="--classic ( -c )" @onClick={{this.toggleClassic}} />
 </p>
 <p>
-  <label>Dummy:</label>
-  <Input @type="checkbox" {{on 'click' this.toggleDummy}}/>
+<CheckBox @label="--dummy ( -dum )" @onClick={{this.toggleDummy}} />
 </p>
 
 <p>

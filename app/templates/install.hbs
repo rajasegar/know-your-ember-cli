@@ -1,3 +1,22 @@
 <h2>install</h2>
 <p>Installs an ember-cli addon from npm.</p>
 <hr>
+
+<p>
+<label>Addon Name:</label>
+<Input @type="text" {{on 'input' this.updateAddonName }} @value={{addonName}}/>
+</p>
+<p>
+<CheckBox @label="--save ( -S )" @onClick={{this.toggleSave}}/>
+</p>
+
+<p>
+<CheckBox @label="--save-dev ( -D )" @onClick={{this.toggleSaveDev}}/>
+</p>
+<p>
+<CheckBox @label="--save-exact ( -E )" @onClick={{this.toggleSaveExact}}/>
+</p>
+
+<p>
+<CheckBox @label="--yarn" @onClick={{this.toggleYarn}}/>
+</p>
