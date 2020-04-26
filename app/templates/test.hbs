@@ -1,3 +1,36 @@
 <h2>test</h2>
 <p>Runs your app's test suite</p>
 <hr>
+
+<div class="two-column-grid">
+  <div>
+    <p>
+    <CheckBox @label="--server ( -s )" @onClick={{this.toggleServer}}/>
+    <span class="info">&#10068;</span>
+    </p>
+
+    <p>
+    <CheckBox @label="--silent" @onClick={{this.toggleSilent}}/>
+    </p>
+    <p>
+    <CheckBox @label="--ssl" @onClick={{this.toggleSsl}}/>
+    </p>
+  </div>
+  <div>
+
+    <p>
+    <label>config-file:</label>
+    <Input @type="text" {{on 'input' this.updateConfig }} @value={{config}}/>
+    </p>
+
+
+    <p>
+    <label>host ( H ):</label>
+    <Input @type="text" {{on 'input' this.updateHost }}/>
+    </p>
+    <p>
+    <label>Directory:</label>
+    <Input @type="text" {{on 'input' this.updateDirectory }}/>
+    </p>
+  </div>
+</div>

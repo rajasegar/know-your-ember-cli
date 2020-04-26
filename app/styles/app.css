@@ -138,3 +138,8 @@ input[type='checkbox'] {
 .logo {
   margin:2em auto;
 }
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

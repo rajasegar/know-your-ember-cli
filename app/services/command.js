@@ -52,6 +52,14 @@ export default class CommandService extends Service {
         this.processInit(cmd);
         break;
 
+      case 'install':
+        this.processInstall(cmd);
+        break;
+
+      case 'test':
+        this.processTest(cmd);
+        break;
+
       default:
         break;
     }
@@ -180,6 +188,23 @@ export default class CommandService extends Service {
     this.cmd = `ember ${_cmd} ${name} ${verbose} ${json}`;
   }
 
+  processInstall(cmd) {
+    const save = cmd.options.save ? this.alias?  '-S' : '--save' : '';
+    const saveDev = cmd.options.saveDev ? this.alias?  '-D' : '--save-dev' : '';
+    const saveExact = cmd.options.saveExact ? this.alias?  '-E' : '--save-exact' : '';
+    const yarn = cmd.options.yarn ?  '--yarn' : '';
+    const name = cmd.options.name;
+    const _cmd = this.cmdAlias ? 'i' : 'install';
+    this.cmd = `ember ${_cmd} ${name} ${save} ${saveDev} ${saveExact} ${yarn}`;
+  }
+
+  processTest(cmd) {
+    const server = cmd.options.server ? this.alias?  '-s' : '--server' : '';
+    const silent = cmd.options.silent ?  '--silent' : '';
+    const ssl = cmd.options.ssl ?  '--ssl' : '';
+    const _cmd = this.cmdAlias ? 't' : 'test';
+    this.cmd = `ember ${_cmd} ${server} ${silent} ${ssl}`;
+  }
 }
 
 
